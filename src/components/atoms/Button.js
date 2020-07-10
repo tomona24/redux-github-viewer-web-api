@@ -3,23 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Styles from '../Styles';
 
-const Button = (props) => {
-  const { text, onClick, type } = props;
-  return (
-    <Container>
-      <div onClick={onClick} className={'btn' + `btn-${type}`}>
-        {text}
-      </div>
-    </Container>
-  );
-};
-
-const Container = styled.div`
-.btn {
-  font-family: ${Styles.FONT_FAMILY};
-  font-size: ${Styles.FONT_SIZE.DEFAULT}px;
-  font-weight: 600;
-  border-radius: ${Styles.BORDER_RADIUS};
+const ButtonDefault = styled.div`
+  border-radius: 6px
   cursor: pointer;
   display: block;
   text-align: center;
@@ -30,18 +15,44 @@ const Container = styled.div`
   margin: 6px 4px;
   border-radius: 6px;
   text-decoration: none;
-  &-primary {
-    color: #fff
-    background: rgb(66, 195, 96);
-    border-bottom: 2px solid rgb(40, 167, 69);
-  }
-  &-secondary {
-    color: #000
-    background: rgb(215, 58, 73);
-    border-bottom: 2px solid rgb(175, 28, 42);
-  }
-}
 `;
+
+const ButtonPrimary = styled(ButtonDefault)`
+  color: #fff
+  background: ${Styles.COLOR.PRIMARY};
+  border-bottom: 2px solid rgb(40, 167, 69);
+  &:hover {
+    background: #28a745;
+    border-bottom: 2px solid #208437;
+  }
+`;
+
+const ButtonSecondary = styled(ButtonDefault)`
+  color: #000
+  background: ${Styles.COLOR.SECONDARY};
+  border-bottom: 2px solid rgb(175, 28, 42);
+  &:hover {
+    background: #af1c2a;
+    border-bottom: 2px solid #671019;
+  }
+`;
+
+const map = {
+  default: ButtonDefault,
+  primary: ButtonPrimary,
+  secondary: ButtonSecondary,
+};
+
+const Button = (props) => {
+  const { text, onClick, type } = props;
+  const component = map[type] || map.default;
+  return React.createElement(component, { onClick }, text);
+  // return (
+  //     <component onClick={onClick}>
+  //       {text}
+  //     </component>
+  // );
+};
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,

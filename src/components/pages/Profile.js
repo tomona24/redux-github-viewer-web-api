@@ -1,31 +1,9 @@
 import styled from 'styled-components';
 import React from 'react';
 import Styles from '../Styles';
-import { Label } from '../atoms/Label';
+import PropTypes from 'prop-types';
 
-const Profile = () => {
-  return (
-    <div>
-      <Label text="Profile" />
-      <Table>
-        <Div direction="column">
-          <Div>プロフィール</Div>
-          <Div>
-            <img src="../img/ui.png" alt="icon" />
-          </Div>
-        </Div>
-        <Div direction="column">
-          <Div>ユーザ名</Div>
-          <Div bold>Tomona</Div>
-          <Div>メールアドレス</Div>
-          <Div bold>kari@example.com</Div>
-        </Div>
-      </Table>
-    </div>
-  );
-};
-
-const Div = styled.div`
+const Field = styled.div`
   display: flex;
   width: 100%;
   padding: 10px;
@@ -43,4 +21,37 @@ const Table = styled.div`
   margin: 50px auto;
   border: 1px solid ${Styles.BORDER_COLOR};
 `;
+
+const Label = styled.h2`
+  margin: 8px auto;
+  width: 200px;
+`;
+
+const Profile = (props) => {
+  const { user } = props;
+  return (
+    <div>
+      <Label>Profile</Label>
+      <Table>
+        <Field direction="column">
+          <Field>プロフィール</Field>
+          <Field>
+            <img src="img/ui.png" alt="icon" />
+          </Field>
+        </Field>
+        <Field direction="column">
+          <Field>ユーザ名</Field>
+          <Field bold>{user.name}</Field>
+          <Field>メールアドレス</Field>
+          <Field bold>{user.email}</Field>
+        </Field>
+      </Table>
+    </div>
+  );
+};
+
+Profile.propTypes = {
+  user: PropTypes.object.isRequired,
+};
+
 export default Profile;

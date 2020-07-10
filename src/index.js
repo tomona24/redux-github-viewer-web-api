@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore , compose } from 'redux';
+import { createStore, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import issueReducer from './modules/issues';
 import userReducer from './modules/users';
@@ -11,18 +11,24 @@ import * as serviceWorker from './serviceWorker';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const reducers = combineReducers({
+  issue: issueReducer,
+  user: userReducer,
+});
 const store = createStore(
-  issueReducer,
+  reducers,
   compose(
-    process.env.NODE_ENV === 'development' && window.devToolsExtension ? window.devToolsExtension() : f => f
+    process.env.NODE_ENV === 'development' && window.devToolsExtension
+      ? window.devToolsExtension()
+      : (f) => f
   )
-)
-      
+);
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
-      </Provider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,20 +1,29 @@
 import styled from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Styles from '../Styles';
 
-export const Label = (props) => {
-  const { text, type } = props;
+const Label = (props) => {
+  const { to, text, type } = props;
 
   switch (type) {
     case 'label':
       return <labelModule type={type}>{text}</labelModule>;
     case 'logo':
-      return <logo href="">Github Viewer</logo>;
+      return (
+        <Link to={to}>
+          <logo>{text}</logo>
+        </Link>
+      );
     case 'link':
-      return <link href="">{text}</link>;
+      return (
+        <Link to={to}>
+          <link>{text}</link>
+        </Link>
+      );
     default:
-      return null;
+      return <div>{text}</div>;
   }
 };
 
@@ -27,7 +36,7 @@ const labelModule = styled.h2`
   font-weight: 700;
 `;
 
-const logo = styled.a`
+const logo = styled.div`
   padding: 4px;
   margin: 4px;
   text-decoration: none;
@@ -37,7 +46,7 @@ const logo = styled.a`
   font-weight: 800;
 `;
 
-const link = styled.a`
+const link = styled.div`
 .link {
   padding: 4px;
   margin: 4px;
@@ -60,8 +69,7 @@ const link = styled.a`
 
 Label.propTypes = {
   text: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
-MenuLabel.propTypes = {
-  text: PropTypes.string.isRequired,
-};
+export default Label;

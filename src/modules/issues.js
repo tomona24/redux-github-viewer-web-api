@@ -1,7 +1,7 @@
 // // action types
-const ADD_ISSUE = "ADD_ISSUE";
-const DELETE_ISSUE = "DELETE_ISSUE";
-const EDIT_ISSUE = "EDIT_ISSUE";
+const ADD_ISSUE = 'ADD_ISSUE';
+const DELETE_ISSUE = 'DELETE_ISSUE';
+const EDIT_ISSUE = 'EDIT_ISSUE';
 
 // action creators
 const addIssue = (issue) => {
@@ -26,33 +26,33 @@ const editIssue = (issue) => {
 };
 
 const kariData = {
-  id: "ore-gorira",
-  title: "ore",
-  detail: "meshi kuu",
-  status: "banana",
-  author: "umai",
-  createdDate: "gorira",
-  updatedDate: "gorira",
+  id: 'ore-gorira',
+  title: 'ore',
+  detail: 'meshi kuu',
+  status: 'banana',
+  author: 'umai',
+  createdDate: 'gorira',
+  updatedDate: 'gorira',
 };
 
 const kariData2 = {
-  id: "are-gorira",
-  title: "are",
-  detail: "meshi kuu",
-  status: "banana",
-  author: "umai",
-  createdDate: "gorira",
-  updatedDate: "gorira",
+  id: 'are-gorira',
+  title: 'are',
+  detail: 'meshi kuu',
+  status: 'banana',
+  author: 'umai',
+  createdDate: 'gorira',
+  updatedDate: 'gorira',
 };
 
 const kariData3 = {
-  id: "ure-gorira",
-  title: "ure",
-  detail: "meshi kuu",
-  status: "banana",
-  author: "umai",
-  createdDate: "gorira",
-  updatedDate: "gorira",
+  id: 'ure-gorira',
+  title: 'ure',
+  detail: 'meshi kuu',
+  status: 'banana',
+  author: 'umai',
+  createdDate: 'gorira',
+  updatedDate: 'gorira',
 };
 
 const initialIssues = [kariData, kariData2, kariData3];

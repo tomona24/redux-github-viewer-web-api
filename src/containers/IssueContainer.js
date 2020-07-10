@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { addIssue, deleteIssue, editIssue } from '../actions';
-import IndexStructure from '../components/organisms/IndexStructure';
+import Issue from '../components/organisms/Issue';
 
 const mapStateToProps = (state) => {
   return {
@@ -22,9 +22,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const IssueContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(IndexStructure);
+const IssueContainer = connect(mapStateToProps, mapDispatchToProps)(Issue);
 
 export default IssueContainer;

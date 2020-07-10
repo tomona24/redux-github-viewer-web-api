@@ -16,8 +16,8 @@ const TextBar = (props) => {
   return (
     <Input
       placeholder={placeholder}
-      type="text"
       name="userInput"
+      type="text"
       value={userInput}
       onChange={handleChange}
     />
